@@ -317,6 +317,7 @@ soniaBalance = soniaBalance.inject(:+)
 # puts soniaBalance.round(2)
 
 ## DISPLAY CODE
+
 puts ("*" * 100)
 puts "Account: Priya === Balance: " + priyaBalance.round(2).to_s
 puts ("*" * 100)
