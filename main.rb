@@ -1,4 +1,5 @@
 require 'csv'
+require 'pry'
 
 priyaAllowance = []
 soniaAllowance = []
@@ -7,6 +8,7 @@ CSV.foreach('accounts.csv',headers:true) do |allowance|
 		if allowance['Category'] === 'Allowance'
 			priyaAllowance << allowance['Inflow'].delete('$').delete(',').to_f - allowance['Outflow'].delete('$').delete(',').to_f
 		end
+		
 	else
 		if allowance['Category'] === 'Allowance'
 			soniaAllowance << allowance['Inflow'].delete('$').delete(',').to_f - allowance['Outflow'].delete('$').delete(',').to_f
@@ -318,42 +320,48 @@ soniaBalance = soniaBalance.inject(:+)
 
 ## DISPLAY CODE
 
+#inputName = ARGV
+
+#if inputName[0] === 'Priya'
 puts ("*" * 100)
 puts "Account: Priya === Balance: " + priyaBalance.round(2).to_s
 puts ("*" * 100)
 puts "Category" + (" "*31) + "| Total Spent | Average Transaction" + (" " * 30)
 puts ("-" * 39) + "|" + ("-" * 13) + "|" + ("-" * 46)
-puts "Allowance" + (" "*30) + "|" + priyaAllowance.round(2).to_s + "  " + priyaAllowanceAvg.round(2).to_s
-puts "Car Repairs" + (" "*28) + "|" + priyaCarRepairs.round(2).to_s + "  " + priyaCarRepairsAvg.round(2).to_s
-puts "Rent" + (" "*35) + "|" + priyaRent.round(2).to_s + "  " + priyaRentAvg.round(2).to_s
-puts "Entertainment" + (" "*26) + "|" + priyaEntertainment.round(2).to_s + "  " + priyaEntertainmentAvg.round(2).to_s
-#puts "Household Goods" + (" "*24) + "|" + priyaHouseholdGoods.round(2).to_s + "  " + priyaHouseholdGoodsAvg.round(2).to_s
-puts "Fuel" + (" "*35) + "|" + priyaFuel.round(2).to_s + "  " + priyaFuelAvg.round(2).to_s
-puts "Clothes" + (" "*32) + "|" + priyaClothes.round(2).to_s + "  " + priyaClothesAvg.round(2).to_s
-puts "Education" + (" "*30) + "|" + priyaEducation.round(2).to_s + "  " + priyaEducationAvg.round(2).to_s
-puts "Groceries" + (" "*30) + "|" + priyaGroceries.round(2).to_s + "  " + priyaGroceriesAvg.round(2).to_s
-puts "Gifts" + (" "*34) + "|" + priyaGifts.round(2).to_s + "  " + priyaGiftsAvg.round(2).to_s
-#puts "Gym" + (" "*36) + "|" + priyaGym.round(2).to_s + "  " + priyaGymAvg.round(2).to_s
-#puts "Medical/Dental" + (" "*25) + "|" + priyaMedicalDental.round(2).to_s + "  " + priyaMedicalDentalAvg.round(2).to_s
-puts "Utilities" + (" "*30) + "|" + priyautilities.round(2).to_s + "  " + priyautilitiesAvg.round(2).to_s
+puts "Allowance" + (" "*30) + "|" + "$" + priyaAllowance.round(2).to_s +  "      |" + "$" +  priyaAllowanceAvg.round(2).to_s
+puts "Car Repairs" + (" "*28) + "|"+ "$" + priyaCarRepairs.round(2).to_s + "       |"+ "$" + priyaCarRepairsAvg.round(2).to_s
+puts "Rent" + (" "*35) + "|"+ "$" + priyaRent.round(2).to_s + "     |"+ "$" + priyaRentAvg.round(2).to_s
+puts "Entertainment" + (" "*26) + "|"+ "$" + priyaEntertainment.round(2).to_s + "     |" + "$"+ priyaEntertainmentAvg.round(2).to_s
+#puts "Household Goods" + (" "*24) + "|" + "$"+ priyaHouseholdGoods.round(2).to_s + + "        |" + "$"+ priyaHouseholdGoodsAvg.round(2).to_s
+puts "Fuel" + (" "*35) + "|"+ "$" + priyaFuel.round(2).to_s + + "      |"+ "$" + priyaFuelAvg.round(2).to_s
+puts "Clothes" + (" "*32) + "|"+ "$" + priyaClothes.round(2).to_s + + "       |"+ "$" + priyaClothesAvg.round(2).to_s
+puts "Education" + (" "*30) + "|"+ "$" + priyaEducation.round(2).to_s + "     |"+ "$" + priyaEducationAvg.round(2).to_s
+puts "Groceries" + (" "*30) + "|"+ "$" + priyaGroceries.round(2).to_s + "     |"+ "$" + priyaGroceriesAvg.round(2).to_s
+puts "Gifts" + (" "*34) + "|" + "$"+ priyaGifts.round(2).to_s + "     |" + "$"+ priyaGiftsAvg.round(2).to_s
+#puts "Gym" + (" "*36) + "|"+ "$" + priyaGym.round(2).to_s + "        |" + "$"+ priyaGymAvg.round(2).to_s
+#puts "Medical/Dental" + (" "*25) + "|" + "$"+ priyaMedicalDental.round(2).to_s + "        |"+ "$" + priyaMedicalDentalAvg.round(2).to_s
+puts "Utilities" + (" "*30) + "|" + "$"+ priyautilities.round(2).to_s + "      |"+ "$" + priyautilitiesAvg.round(2).to_s
 puts "\n"
 puts "\n"
+#end
+
+#if inputName[0] === 'Sonia'
 puts ("*" * 100)
 puts "Account: Sonia === Balance: " + soniaBalance.round(2).to_s
 puts ("*" * 100)
 puts "Category" + (" "*31) + "| Total Spent | Average Transaction" + (" " * 30)
 puts ("-" * 39) + "|" + ("-" * 13) + "|" + ("-" * 46)
-puts "Allowance" + (" "*30) + "|" + soniaAllowance.round(2).to_s + " " + soniaAllowanceAvg.round(2).to_s
-#puts "Car Repairs" + (" "*28) + "|" + soniaCarRepairs.round(2).to_s + " " + soniaCarRepairsvg.round(2).to_s
-#puts "Rent" + (" "*35) + "|" + soniaRent.round(2).to_s + " " + soniaRentAvg.round(2).to_s
-puts "Entertainment" + (" "*26) + "|" + soniaEntertainment.round(2).to_s + " " + soniaEntertainmentAvg.round(2).to_s
-puts "Household Goods" + (" "*24) + "|" + soniaHouseholdGoods.round(2).to_s + " " + soniaHouseholdGoodsAvg.round(2).to_s
-#puts "Fuel" + (" "*35) + "|" + soniaFuel.round(2).to_s + " " + soniaFuelAvg.round(2).to_s
-puts "Clothes" + (" "*32) + "|" + soniaClothes.round(2).to_s + " " + soniaClothesAvg.round(2).to_s
-puts "Education" + (" "*30) + "|" + soniaEducation.round(2).to_s + " " + soniaEducationAvg.round(2).to_s
-puts "Groceries" + (" "*30) + "|" + soniaGroceries.round(2).to_s + " " + soniaGroceriesAvg.round(2).to_s
-puts "Gifts" + (" "*34) + "|" + soniaGifts.round(2).to_s + " " + soniaGiftsAvg.round(2).to_s
-puts "Gym" + (" "*36) + "|" + soniaGym.round(2).to_s + " " + soniaGymAvg.round(2).to_s
-puts "Medical/Dental" + (" "*25) + "|" + soniaMedicalDental.round(2).to_s + " " + soniaMedicalDentalAvg.round(2).to_s
-puts "Utilities" + (" "*30) + "|" + soniautilities.round(2).to_s + " " + soniautilitiesAvg.round(2).to_s
-
+puts "Allowance" + (" "*30) + "|"+ "$" + soniaAllowance.round(2).to_s + "      |"+ "$" + soniaAllowanceAvg.round(2).to_s
+#puts "Car Repairs" + (" "*28) + "|"+ "$" + soniaCarRepairs.round(2).to_s + "        |"+ "$" + soniaCarRepairsvg.round(2).to_s
+#puts "Rent" + (" "*35) + "|"+ "$" + soniaRent.round(2).to_s + "        |"+ "$" + soniaRentAvg.round(2).to_s
+puts "Entertainment" + (" "*26) + "|"+ "$" + soniaEntertainment.round(2).to_s + "      |"+ "$" + soniaEntertainmentAvg.round(2).to_s
+puts "Household Goods" + (" "*24) + "|"+ "$" + soniaHouseholdGoods.round(2).to_s + "     |"+ "$" + soniaHouseholdGoodsAvg.round(2).to_s
+#puts "Fuel" + (" "*35) + "|" + "$"+ soniaFuel.round(2).to_s + "        |" + "$"+ soniaFuelAvg.round(2).to_s
+puts "Clothes" + (" "*32) + "|"+ "$" + soniaClothes.round(2).to_s + "      |" + "$"+ soniaClothesAvg.round(2).to_s
+puts "Education" + (" "*30) + "|"+ "$" + soniaEducation.round(2).to_s + "      |"+ "$" + soniaEducationAvg.round(2).to_s
+puts "Groceries" + (" "*30) + "|" + "$"+ soniaGroceries.round(2).to_s + "     |"+ "$" + soniaGroceriesAvg.round(2).to_s
+puts "Gifts" + (" "*34) + "|"+ "$" + soniaGifts.round(2).to_s + "      |" + "$"+ soniaGiftsAvg.round(2).to_s
+puts "Gym" + (" "*36) + "|"+ "$" + soniaGym.round(2).to_s + "      |"+ "$" + soniaGymAvg.round(2).to_s
+puts "Medical/Dental" + (" "*25) + "|"+ "$" + soniaMedicalDental.round(2).to_s + "      |" + "$"+ soniaMedicalDentalAvg.round(2).to_s
+puts "Utilities" + (" "*30) + "|"+ "$" + soniautilities.round(2).to_s + "     |"+ "$" + soniautilitiesAvg.round(2).to_s
+#end
