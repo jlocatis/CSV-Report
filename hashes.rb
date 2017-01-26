@@ -47,7 +47,7 @@ def printTerminal(inputName)
 	puts "Account: " + inputName + " *** Balance: " + balance[0]
 	puts ("*" * 80)
 	puts "Category" + (" "*20) + "| Total Spent | Average Transaction" + (" " * 17)
-	puts ("-" * 28) + "|" + ("-" * 13) + "|" + ("-" * 37)
+	puts ("-" * 28)s + "|" + ("-" * 13) + "|" + ("-" * 37)
 
 	categories = ["Allowance", "Car Repairs", "Rent", "Entertainment", "Fuel", "Clothes",
 	"Education", "Groceries", "Gifts", "Utilities", "Household Goods", "Gym", "Medical/Dental", "Meals"]
