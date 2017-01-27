@@ -1,30 +1,60 @@
 require 'csv'
 require 'pry'
 
+class Calculate
+	def set_value_inflow(number_from_csv)
+    	@value = number_from_csv.delete('$').delete(',').to_f
+  	end
+
+  	def set_value_outflow(number_from_csv)
+  		@value = number_from_csv.delete('$').delete(',').to_f
+  	end
+
+  	def to_f
+  		return @value
+  	end
+end
+
+class CalculateAverage
+	def find_average_amount(array_of_amounts)
+		transaction_count = array_of_amounts.count
+		array_of_amounts = array_of_amounts.inject(:+)
+		@value = array_of_amounts / transaction_count
+	end
+
+	def to_f
+		return @value
+	end
+end
+
+class FinalNumbers
+	def numbers_for_print(array_of_amounts, average)
+		@value = []
+		array_of_amounts = array_of_amounts.inject(:+)
+		average = "$" + average.round(2).to_s
+		array_of_amounts = "$" + array_of_amounts.round(2).to_s
+		@value << array_of_amounts << average
+	end
+end
+
 def totalSpent(personName, category)
-	returnArray = []
 	tempArray = []
 
 	CSV.foreach('accounts.csv',headers:true) do |row|	
 		accounts = row['Account'].delete("\n")
 		if accounts === personName
+			inflow = Calculate.new
+			outflow = Calculate.new
 			if row['Category'] === category
-				inflow = row['Inflow'].delete('$').delete(',').to_f
-				outflow = row['Outflow'].delete('$').delete(',').to_f
-				tempArray << inflow - outflow
+				inflow = inflow.set_value_inflow(row['Inflow'])
+				outflow = outflow.set_value_outflow(row['Outflow'])
+				tempArray << inflow.to_f - outflow.to_f
 			elsif category === "Balance"
-				inflow = row['Inflow'].delete('$').delete(',').to_f
-				outflow = row['Outflow'].delete('$').delete(',').to_f
-				tempArray << inflow - outflow
+				inflow = inflow.set_value_inflow(row['Inflow'])
+				outflow = outflow.set_value_outflow(row['Outflow'])
+				tempArray << inflow.to_f - outflow.to_f
 			end
 		end
-	end
-
-	def avgTrans(array)
-		count = array.count
-		array = array.inject(:+)
-		array = array / count
-		return array
 	end
 
 	tempArray.compact
@@ -32,12 +62,11 @@ def totalSpent(personName, category)
 		tempArray << 0
 	end
 
-	average = avgTrans(tempArray)
-	tempArray = tempArray.inject(:+)
-	average = "$" + average.round(2).to_s
-	tempArray = "$" + tempArray.round(2).to_s
-	returnArray << tempArray << average
-#	returnArray << average
+	average = CalculateAverage.new
+	average = average.find_average_amount(tempArray)
+
+	returnArray = FinalNumbers.new
+	returnArray = returnArray.numbers_for_print(tempArray, average)
 	return returnArray
 end
 
@@ -47,7 +76,7 @@ def printTerminal(inputName)
 	puts "Account: " + inputName + " *** Balance: " + balance[0]
 	puts ("*" * 80)
 	puts "Category" + (" "*20) + "| Total Spent | Average Transaction" + (" " * 17)
-	puts ("-" * 28)s + "|" + ("-" * 13) + "|" + ("-" * 37)
+	puts ("-" * 28) + "|" + ("-" * 13) + "|" + ("-" * 37)
 
 	categories = ["Allowance", "Car Repairs", "Rent", "Entertainment", "Fuel", "Clothes",
 	"Education", "Groceries", "Gifts", "Utilities", "Household Goods", "Gym", "Medical/Dental", "Meals"]
@@ -107,7 +136,9 @@ def printCSV(inputName)
 	x = 0
 	while x <= categories.count - 1
 		finalArray = totalSpent(inputName, categories[x])
-		puts categories[x] + "," + finalArray[0] + "," + finalArray[1]
+		if finalArray[0] != "$0.0"
+			puts categories[x] + "," + finalArray[0] + "," + finalArray[1]
+		end
 		x += 1
 	end
 end

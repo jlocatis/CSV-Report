@@ -93,9 +93,9 @@ end
 def printHtmlStuff(string, variable)
 	if variable[0] != "$0.0"
 		puts "\t<tr>"
-		puts "\t\t<td>" + string + "<td>"
-		puts "\t\t<td>" + variable[0] + "<td>"
-		puts "\t\t<td>" + variable[1] + "<td>"
+		puts "\t\t<td>" + string + "</td>"
+		puts "\t\t<td>" + variable[0] + "</td>"
+		puts "\t\t<td>" + variable[1] + "</td>"
 		puts "\t<tr>"
 	end
 end
@@ -107,7 +107,9 @@ def printCSV(inputName)
 	x = 0
 	while x <= categories.count - 1
 		finalArray = totalSpent(inputName, categories[x])
-		puts categories[x] + "," + finalArray[0] + "," + finalArray[1]
+		if finalArray[0] != "$0.0"
+			puts categories[x] + "," + finalArray[0] + "," + finalArray[1]
+		end
 		x += 1
 	end
 end
