@@ -57,6 +57,25 @@ CSV.foreach('accounts.csv', {headers:true, return_headers:false}) do |row|
   current_category[:average_transaction] += average
 end
 
+def printTerminalAll(hash)
+  hash.each do |key, value|
+    printBalance = "$" + value[:total].round(2).to_s
+    puts ("*" * 80)
+    puts "Account: #{key} *** Balance: " + printBalance
+    puts ("*" * 80)
+    puts "Category" + (" "*20) + "| Total Spent | Average Transaction" + (" " * 17)
+    puts ("-" * 28) + "|" + ("-" * 13) + "|" + ("-" * 37)
+
+    value[:categories].each do |key, value|
+      printTotal = "$" + value[:total_spent].round(2).to_s
+      printAverage = "$" + value[:average_transaction].round(2).to_s
+      space1 = 28 - key.length
+      space2 = 13 - printTotal.length
+      puts key + (" "*space1) + "|" + printTotal+ (" "*space2) + "|" + printAverage
+    end
+  end
+end
+
 def printTerminal(hash, name)
   hash.each do |key, value|
     current_name = key
@@ -75,25 +94,6 @@ def printTerminal(hash, name)
         space2 = 13 - printTotal.length
         puts key + (" "*space1) + "|" + printTotal+ (" "*space2) + "|" + printAverage
       end
-    end
-  end
-end
-
-def printTerminalAll(hash)
-  hash.each do |key, value|
-    printBalance = "$" + value[:total].round(2).to_s
-    puts ("*" * 80)
-    puts "Account: #{key} *** Balance: " + printBalance
-    puts ("*" * 80)
-    puts "Category" + (" "*20) + "| Total Spent | Average Transaction" + (" " * 17)
-    puts ("-" * 28) + "|" + ("-" * 13) + "|" + ("-" * 37)
-
-    value[:categories].each do |key, value|
-      printTotal = "$" + value[:total_spent].round(2).to_s
-      printAverage = "$" + value[:average_transaction].round(2).to_s
-      space1 = 28 - key.length
-      space2 = 13 - printTotal.length
-      puts key + (" "*space1) + "|" + printTotal+ (" "*space2) + "|" + printAverage
     end
   end
 end
@@ -188,7 +188,11 @@ if input.include? 'HTML'
   if inputName == nil
     printHTMLAll(accounts)
   else
-    printHTML(accounts, inputName)
+    if accounts.has_key?(inputName)
+      printHTML(accounts, inputName)
+    else
+      puts "Name or output type not found. Please enter a valid account holder and/or output format."
+    end
   end
 elsif input.include? 'CSV'
   index0 = input.index('CSV')
@@ -197,13 +201,22 @@ elsif input.include? 'CSV'
   if inputName == nil
     printCSVAll(accounts)
   else
-    printCSV(accounts, inputName)
+    if accounts.has_key?(inputName)
+      printCSV(accounts, inputName)
+    else
+      puts "Name or output type not found. Please enter a valid account holder and/or output format."
+    end
   end
 else
   inputName = input[0]
+  formatName = input[1]
   if inputName == nil
     printTerminalAll(accounts)
   else
-    printTerminal(accounts, inputName)
+    if accounts.has_key?(inputName)
+      printTerminal(accounts, inputName)
+    else
+      puts "Name or output type not found. Please enter a valid account holder and/or output format."
+    end
   end
 end
