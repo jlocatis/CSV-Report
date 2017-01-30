@@ -208,15 +208,19 @@ elsif input.include? 'CSV'
     end
   end
 else
-  inputName = input[0]
-  formatName = input[1]
-  if inputName == nil
-    printTerminalAll(accounts)
-  else
-    if accounts.has_key?(inputName)
-      printTerminal(accounts, inputName)
+  arrayCount = input.count
+  if arrayCount <= 1
+    inputName = input[0]
+    if inputName == nil
+      printTerminalAll(accounts)
     else
-      puts "Name or output type not found. Please enter a valid account holder and/or output format."
+      if accounts.has_key?(inputName)
+        printTerminal(accounts, inputName)
+      else
+        puts "Name or output type not found. Please enter a valid account holder and/or output format."
+      end
     end
+  else
+    puts "Name or output type not found. Please enter a valid account holder and/or output format."
   end
 end
