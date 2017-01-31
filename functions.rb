@@ -1,5 +1,4 @@
 require 'csv'
-
 require 'pry'
 
 class AccountClass
@@ -10,7 +9,6 @@ class AccountClass
 	end
 
 	def addCategory(row)
-
 		@categoryData[row["Category"].chomp] = DataClass.new
 		@categoryData[row["Category"].chomp].initial_values
 	end
@@ -67,9 +65,6 @@ class AccountClass
 	end
 
 end
-
-
-
 
 class DataClass
 	def initial_values
@@ -134,15 +129,7 @@ def csvAccountDataParsing
 
 	return accounts
 end
-
-
-
-
-
-
-
 ################# FOR OUTPUT AND DISPLAY BELOW ################
-
 
 def createReportInTerminal(accountClass, name)
 	#create spacing

@@ -8,21 +8,20 @@ k = 0
 
 data = csvAccountDataParsing
 
-#expectedResults = balance
-# expectedResults = 3094.76
-
-# testfunction(data, expectedResults)
-
-
-holdingArray = Array.new
+holdingArray = []
 ways = ["csv", "CSV", "HTML", "html"]
 ways.each do |i|
 	holdingArray << inputNames.delete(i)
 end
 
-while k < inputNames.length 
+if inputNames == []
+	puts "You need to type a name!"
+end
+
+while k < inputNames.length
 	if data[inputNames[k].capitalize] == nil
 		puts inputNames[k] + " is not included in the csv file! Try again."
+		puts "Try: " + data.keys.to_s
 		k += 1
 	else	
 		currentAccountData = data[inputNames[k].capitalize]
@@ -34,6 +33,5 @@ while k < inputNames.length
 		end
 		createReportInTerminal(currentAccountData, inputNames[k])
 		k += 1
-
 	end
 end

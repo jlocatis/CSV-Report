@@ -1,13 +1,6 @@
 require_relative "./functions.rb"
+require_relative"/Users/jamielocatis/code/test_framework.rb"
 require 'csv'
-
-def test_equality(expected, actual)
-	if expected == actual
-		puts "Pass"
-	else
-		puts "Fail. Expected #{expected}, but got #{actual}"
-	end
-end
 
 def testTotalAverage
 	#SET_UP
@@ -30,11 +23,10 @@ def testTotalAverage
 
 	#check
 	actualTotal = test.getTotal
-	puts test_equality(expectedTotal, actualTotal)
+	puts testEquality(expectedTotal, actualTotal)
 
 	actualAverage = test.getAverage
-	puts test_equality(expectedAverage, actualAverage)
-
+	puts testEquality(expectedAverage, actualAverage)
 end
 
 def testCategoryNames
@@ -52,7 +44,7 @@ def testCategoryNames
 
 	#check
 	expectedKeyArray = ["a","b","c"]
-	puts test_equality(expectedKeyArray, test.getCategoryData.keys)
+	puts testEquality(expectedKeyArray, test.getCategoryData.keys)
 end
 
 testTotalAverage()
