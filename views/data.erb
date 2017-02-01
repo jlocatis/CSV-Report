@@ -1,15 +1,23 @@
 <head>
-	<script>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	</script>
+	<link rel="stylesheet" type="text/css" href="/style.css">
 	<title>Account Info</title>
 </head>
+<body>
+
+<p>Select an account to see below:</p>
+
+<select onChange="window.location.href=this.value">
+	<option value="/">Main Menu</option>
+	<option value="/sonia">Sonia</option>
+	<option value="/priya">Priya</option>
+	<option value="/both">Both</option>
+</select>
 
 <% @names.each do |name| %>
 
-<h1> <%= name.capitalize %> </h1>
-<p>Total Balance: $ <%= @data[name].getBalance.to_s %></p>
-<tr>
+<h1 class="test"> <%= name.capitalize %> </h1>
+<p>Total Balance: $<%= @data[name].getBalance.to_s %></p>
+
 	<table>
 	<tr>
 		<td>Category</td>
@@ -20,12 +28,12 @@
 	<% @data[name].getCategoryData.each do |key, value| %>
 	<tr>
 		<td><%= key %></td>
-		<td><%= value.getTotal.to_s %></td>
-		<td><%= value.getAverage.to_s %></td>
+		<td>$<%= value.getTotal.to_s %></td>
+		<td>$<%= value.getAverage.to_s %></td>
 	</tr>
 	<% end %>
 	</table>
 
 <% end %>
 
-<a href="/index">Go back</a>
+</body>

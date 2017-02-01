@@ -4,7 +4,7 @@ require 'pry'
 
 @data = csvAccountDataParsing
 
-get("/index") {
+get("/") {
 	erb :index
 }
 

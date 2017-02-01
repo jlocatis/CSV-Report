@@ -1,9 +1,18 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
 
 	<title>Select an account</title>
 </head>
 
-<a href="/sonia">Sonia</a><br>
-<a href="/priya">Priya</a><br>
-<a href="/both">Both</a><br>
+<body>
+
+<p>Select an account to see below:</p>
+
+<select onChange="window.location.href=this.value">
+	<option value="/">Main Menu</option>
+	<option value="/sonia">Sonia</option>
+	<option value="/priya">Priya</option>
+	<option value="/both">Both</option>
+</select>
+
+</body>
