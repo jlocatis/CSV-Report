@@ -2,8 +2,6 @@ require 'sinatra'
 require_relative "./functions.rb"
 require 'pry'
 
-@data = csvAccountDataParsing
-
 get("/") {
 	erb :index
 }
