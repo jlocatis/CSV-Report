@@ -2,6 +2,7 @@ require 'sinatra'
 require_relative "./classes/functions.rb"
 require_relative "./classes/edit.rb"
 require_relative "./classes/data.rb"
+require_relative "./classes/accounts.rb"
 require 'pry'
 
 post("/") {

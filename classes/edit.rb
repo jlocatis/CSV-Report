@@ -13,6 +13,8 @@ class EditRow
 			row["Account"] = row["Account"].chomp
 			row["Category"] = row["Category"].chomp
 			row["Payee"] = row["Payee"].chomp
+			row["Inflow"] = row["Inflow"].delete(",")
+			row["Outflow"] = row["Outflow"].delete(",")
 			@arrayOfRows << row.to_s
 		end
 	end
