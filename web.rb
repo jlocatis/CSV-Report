@@ -1,25 +1,36 @@
 require 'sinatra'
 require_relative "./functions.rb"
+require_relative "./addcsvrow.rb"
 require 'pry'
+
+post("/") {
+	addRow(params)
+	redirect('/')
+}
 
 get("/") {
 	erb :index
 }
 
-get("/sonia") {
+get("/data") {
 	@data = csvAccountDataParsing
-	@names = ['Sonia']
+	@name = params["name"]
 	erb :data
 }
 
-get("/priya") {
-	@data = csvAccountDataParsing
-	@names = ['Priya']
-	erb :data
+get("/printcsv") {
+	@rows = loadArray()
+	erb :printcsv
 }
 
-get("/both") {
-	@data = csvAccountDataParsing
-	@names = ['Sonia', 'Priya']
-	erb :data
+post("/printcsv") {
+	@remove = params["row_to_remove"]
+	removeRow(@remove)
+	redirect('/')
 }
+
+# get("/both") {
+# 	@data = csvAccountDataParsing
+# 	@names = ['Sonia', 'Priya']
+# 	erb :data
+# }

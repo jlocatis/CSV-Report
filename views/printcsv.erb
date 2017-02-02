@@ -1,0 +1,20 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<title>All Transactions Overview</title>
+</head>
+
+<body>
+
+<ol>
+<% @rows.each do |row| %>
+	<li><%= row %></li>
+<% end %>
+</ol>
+
+<p>Enter a line to remove:</p>
+<form action="/printcsv" method="post">
+	<p><input type="text" name="row_to_remove"></p>
+	<p><input type="submit"></p>
+</form>
+
+</body>

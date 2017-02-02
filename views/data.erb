@@ -8,15 +8,15 @@
 
 <select onChange="window.location.href=this.value">
 	<option value="/">Main Menu</option>
-	<option value="/sonia">Sonia</option>
-	<option value="/priya">Priya</option>
+	<option value="/data?name=Sonia">Sonia</option>
+	<option value="/data?name=Priya">Priya</option>
 	<option value="/both">Both</option>
 </select>
 
-<% @names.each do |name| %>
+<% #@names.each do |name| %>
 
-<h1 class="test"> <%= name.capitalize %> </h1>
-<p>Total Balance: $<%= @data[name].getBalance.to_s %></p>
+<h1 class="test"> <%= @name.capitalize %> </h1>
+<p>Total Balance: $<%= @data[@name].getBalance.to_s %></p>
 
 	<table>
 	<tr>
@@ -25,7 +25,7 @@
 		<td>Average Transaction</td>
 	</tr>
 
-	<% @data[name].getCategoryData.each do |key, value| %>
+	<% @data[@name].getCategoryData.each do |key, value| %>
 	<tr>
 		<td><%= key %></td>
 		<td>$<%= value.getTotal.to_s %></td>
@@ -34,6 +34,6 @@
 	<% end %>
 	</table>
 
-<% end %>
+<% #end %>
 
 </body>

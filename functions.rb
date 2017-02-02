@@ -98,9 +98,6 @@ class DataClass
 
 end
 
-
-
-
 #function to set initial values for new categories and accounts
 def set_initial_values(accountsHash,name,row)
 	unless accountsHash.has_key?(name)
@@ -147,7 +144,6 @@ def createReportInTerminal(accountClass, name)
 
 end
 
-
 def createReportHTML(accountClass, name)
 	puts "<h1>" + name.capitalize + "</h1>"
 	puts "<p>Total Balance: $" + accountClass.getBalance.to_s + "</p>"
@@ -168,7 +164,6 @@ def createReportHTML(accountClass, name)
 	end
 	puts "</table>"
 end
-
 
 def createReportCSV(accountClass, name)
 	

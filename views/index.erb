@@ -1,7 +1,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="/style.css">
 
-	<title>Select an account</title>
+	<title>Accounts Management</title>
 </head>
 
 <body>
@@ -10,9 +10,24 @@
 
 <select onChange="window.location.href=this.value">
 	<option value="/">Main Menu</option>
-	<option value="/sonia">Sonia</option>
-	<option value="/priya">Priya</option>
+	<option value="/data?name=Sonia">Sonia</option>
+	<option value="/data?name=Priya">Priya</option>
 	<option value="/both">Both</option>
 </select>
+
+<p>Add a new information to your account:<br>
+
+<form action="/" method="post">
+	<p>Account Name: <input type="text" name="Account"></p>
+	<p>Date: <input type="text" name="Date"></p>
+	<p>Payee: <input type="text" name="Payee"></p>
+	<p>Category: <input type="text" name="Category"></p>
+	<p>Inflow: <input type="text" name="Inflow"></p>
+	<p>Outflow: <input type="text" name="Outflow"></p>
+
+	<input type="Submit">
+</form>
+
+<a href="/printcsv">Print CSV file and remove lines</a>
 
 </body>
