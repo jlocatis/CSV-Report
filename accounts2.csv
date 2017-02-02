@@ -1,3 +1,4 @@
+Account,Date,Payee,Category,Outflow,Inflow
 Priya,1/1/2017,STARTING BALANCE,Allowance,$0.00,"$5,000.00"
 Sonia,1/1/2017,STARTING BALANCE,Allowance,$0.00,"$3,800.00"
 Priya,1/9/2017,ACME AUTO REPAIR,Car Repairs,$4.91,$0.00
@@ -45,4 +46,4 @@ Sonia,1/9/2017,THE UPS STORE,Gifts,$40.03,$0.00
 Sonia,1/15/2017,WALGREENS,Medical/Dental,$0.00,$41.25
 Sonia,1/11/2017,WALGREENS,Medical/Dental,$52.68,$0.00
 Sonia,1/11/2017,WALGREENS,Medical/Dental,$18.08,$0.00
-Sonia,11/11/1111,Jamie,Stuff,300.00,200.00
+Jamie,11/11/1111,Jamie,Stuff,4000.00,2000.00

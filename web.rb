@@ -4,7 +4,7 @@ require_relative "./addcsvrow.rb"
 require 'pry'
 
 post("/") {
-	addRow(params)
+	addRowFunction(params)
 	redirect('/')
 }
 
@@ -19,13 +19,13 @@ get("/data") {
 }
 
 get("/printcsv") {
-	@rows = loadArray()
+	params = {"test" => "test"}
+	@rows = printCSV(params)
 	erb :printcsv
 }
 
 post("/printcsv") {
-	@remove = params["row_to_remove"]
-	removeRow(@remove)
+	removeRowFunction(params)
 	redirect('/')
 }
 
