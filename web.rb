@@ -1,6 +1,7 @@
 require 'sinatra'
-require_relative "./functions.rb"
-require_relative "./addcsvrow.rb"
+require_relative "./classes/functions.rb"
+require_relative "./classes/edit.rb"
+require_relative "./classes/data.rb"
 require 'pry'
 
 post("/") {
