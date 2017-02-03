@@ -2,7 +2,7 @@ Account,Date,Payee,Category,Outflow,Inflow
 Priya,1/1/2017,STARTING BALANCE,Allowance,$0.00,$5000.00
 Sonia,1/1/2017,STARTING BALANCE,Allowance,$0.00,$3800.00
 Priya,1/9/2017,ACME AUTO REPAIR,Car Repairs,$4.91,$0.00
-Priya,1/4/2017,ACME LANDLORD,Rent,$800.43,$0.00
+jamie,1/4/2017,ACME LANDLORD,Rent,$800.43,$0.00
 Priya,1/16/2017,ALAMO DRAFTHOUSE,Entertainment,$27.62,$0.00
 Priya,1/10/2017,APPLEBEE'S,Entertainment,$100.00,$0.00
 Sonia,1/10/2017,BIG LOTS,Household Goods,$29.43,$0.00
@@ -45,4 +45,4 @@ Sonia,1/12/2017,THE SALVATION ARMY,Clothes,$25.35,$0.00
 Sonia,1/9/2017,THE UPS STORE,Gifts,$40.03,$0.00
 Sonia,1/15/2017,WALGREENS,Medical/Dental,$0.00,$41.25
 Sonia,1/11/2017,WALGREENS,Medical/Dental,$52.68,$0.00
-Sonia,1/11/2017,WALGREENS,Medical/Dental,$18.08,$0.00
+Sonia,1/11/2017,WALGREENS,Medical/Dental,$19.00,$0.00

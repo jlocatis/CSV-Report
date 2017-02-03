@@ -47,10 +47,6 @@ class EditRow
 		return @arrayOfRows
 	end
 
-	def editRowViewFunction
-		viewRow = @vars['row_to_edit'].to_i - 1
-	end
-
 end
 
 def printCSV(params)
@@ -76,9 +72,30 @@ def removeRowFunction(params)
 	newRow.updateCSVFile
 end
 
-def editRowViewFunction(params)
-	newRow = EditRow.new
-	newRow.test(params)
-	newRow.loadArray
-	newRow.displayRow
+def rowToArray(arrayOfRows,rowToGet)
+	row_to_edit = arrayOfRows.values_at(rowToGet).shift
+	newArray = row_to_edit.delete("\n").split(",")
+	return newArray
+end
+
+def editRowFunction(params,rowToGet)
+	columnToGet = params["x"].to_i
+	newText = params["info_to_edit"]
+
+	arrayOfRows = printCSV({})
+	newArray = rowToArray(arrayOfRows,rowToGet)
+
+	newArray[columnToGet] = newText
+	newcsvrow = newArray.to_csv
+	arrayOfRows[rowToGet] = newcsvrow
+	updateCSVFile(arrayOfRows)
+end
+
+def updateCSVFile(arrayOfRows)
+	File.open('accounts.csv', 'w') do |file|
+		file << "Account,Date,Payee,Category,Outflow,Inflow\n"
+		arrayOfRows.each do |line|
+			file << line
+		end
+	end
 end

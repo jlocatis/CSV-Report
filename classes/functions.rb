@@ -29,3 +29,9 @@ def csvAccountDataParsing
 
 	return accounts
 end
+
+def checkUsername(user)
+	unless user
+		redirect('/loginerror')
+	end
+end
