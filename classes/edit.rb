@@ -47,6 +47,10 @@ class EditRow
 		return @arrayOfRows
 	end
 
+	def editRowViewFunction
+		viewRow = @vars['row_to_edit'].to_i - 1
+	end
+
 end
 
 def printCSV(params)
@@ -70,4 +74,11 @@ def removeRowFunction(params)
 	newRow.loadArray
 	newRow.removeRow
 	newRow.updateCSVFile
+end
+
+def editRowViewFunction(params)
+	newRow = EditRow.new
+	newRow.test(params)
+	newRow.loadArray
+	newRow.displayRow
 end

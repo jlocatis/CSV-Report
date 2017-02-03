@@ -5,11 +5,6 @@ require_relative "./classes/data.rb"
 require_relative "./classes/accounts.rb"
 require 'pry'
 
-post("/") {
-	addRowFunction(params)
-	redirect('/')
-}
-
 get("/") {
 	erb :index
 }
@@ -20,17 +15,32 @@ get("/data") {
 	erb :data
 }
 
+post("/printcsv") {
+	removeRowFunction(params)
+	redirect('/removecsvsuccess')
+}
+
 get("/printcsv") {
-	params = {"test" => "test"}
 	@rows = printCSV(params)
 	erb :printcsv
 }
 
-post("/printcsv") {
-	removeRowFunction(params)
-	redirect('/')
+post("/addcsv") {
+	addRowFunction(params)
+	redirect('/addcsvsuccess')
 }
 
+get("/addcsv") {
+	erb :addcsv
+}
+
+get("/addcsvsuccess") {
+	erb :addcsvsuccess
+}
+
+get("/removecsvsuccess") {
+	erb :removecsvsuccess
+}
 # get("/both") {
 # 	@data = csvAccountDataParsing
 # 	@names = ['Sonia', 'Priya']

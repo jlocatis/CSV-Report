@@ -4,13 +4,14 @@
 </head>
 <body>
 
-<p>Select an account to see below:</p>
+<p>Select an account to view or option below:</p>
 
 <select onChange="window.location.href=this.value">
 	<option value="/">Main Menu</option>
-	<option value="/data?name=Sonia">Sonia</option>
-	<option value="/data?name=Priya">Priya</option>
-	<option value="/both">Both</option>
+	<option value="/data?name=Sonia" selected="selected">Account: Sonia</option>
+	<option value="/data?name=Priya">Account: Priya</option>
+	<option value="/printcsv">Print All Stored Transactions & Edit Information</option>
+	<option value="/addcsv">Add New Transaction</option>
 </select>
 
 <% #@names.each do |name| %>
