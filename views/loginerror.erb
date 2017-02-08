@@ -1,20 +1,17 @@
-<body>
-
 <% if session[:notcurrentuser] %>
 
-	<h1>Login error!</h1>
+	<p class="page_title">Login error!</p>
 
-	<p>Sorry, the username <%= @name %> does not exist, or the password was incorrect.</p>
+	<p class="center">Sorry, the username <%= @name %> does not exist or the password entered was incorrect.</p>
 
-	<p><a href="/">Click here</a> to return to login page.</p>
+	<p class="center"><a href="/">Click here</a> to return to login page.</p>
 
 	<% session.delete(:notcurrentuser) %>
 
 <% else %>
 
-	<h2>You are not logged in!</h2>
+	<p class="page_title">You are not logged in!</p>
 
-	<p>Please return to the <a href="/">login page</a>.</p>
+	<p class="center">Please return to the <a href="/">login page</a>.</p>
 
 <% end %>
-</body>

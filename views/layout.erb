@@ -1,8 +1,25 @@
+<html>
 <head>
 	<link rel="stylesheet" type="text/css" href="/style.css">
-	<title>All Transactions Overview</title>
+	<link rel="stylesheet" type="text/css" href="/button.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<title>Accounts Management</title>
 </head>
+
+<body>
+
+<ul>
+	<li><a href="/data">Accounts</a></li>
+	<li><a href="/printcsv">Edit Transactions</a></li>
+	<li style="float:right"><a href="/logout">Logout</a></li>
+<!-- 	<li style="float:right"><a href="/">Currently logged in as <em><%= @name %></em></a></li> -->
+</ul>
+
+<div class="top">
 
 <%= yield %>
 
-<p><form action="/logout" method="post"><input type="submit" value="Logout"></form></p>
+</div>
+</body>
+</html>

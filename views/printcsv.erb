@@ -1,41 +1,8 @@
-<body>
+<p class="page_title">Edit Transactions</p>
 
-<p>Select an account to view or option below:</p>
+<p class="center"><strong>View, edit, or delete all transactions available.</strong></p>
 
-<select onChange="window.location.href=this.value">
-	<option value="/">Main Menu</option>
-	<option value="/data?name=Sonia">Account: Sonia</option>
-	<option value="/data?name=Priya">Account: Priya</option>
-	<option value="/printcsv" selected="selected">Print All Stored Transactions & Edit Information</option>
-	<option value="/addcsv">Add New Transaction</option>
-</select>
-
-<table>
-<thead>
-	<tr>
-		<th>T#</th>
-		<th>Account</th>
-		<th>Date</th>
-		<th>Payee</th>
-		<th>Category</th>
-		<th>Outflow</th>
-		<th>Inflow</th>
-	</tr>
-</thead>
-<% count = 0 %>
-<% @rows.each do |row| %>
-	<% count = count + 1 %>
-	<tr>
-		<td><%= count.to_s + ": " %></td>
-		<% currentRow = row.split(",")
-		currentRow.each do |x| %>
-			<td><%= x %> </td>
-		<% end %>
-	</tr>
-<% end %>
-</table>
-
-<table>
+<table class="half">
 	<tr>
 		<td>
 			<p>Enter a line (T#) to remove:</p>
@@ -43,8 +10,6 @@
 				<p><input type="number" name="row_to_remove"></p>
 				<p><input type="submit"></p>
 			</form>
-		</td>
-		<td>
 			<p>Enter a line (T#) to edit:</p>
 			<form action="/editcsv" method="post">
 				<p><input type="number" name="row_to_edit"></p>
@@ -54,4 +19,27 @@
 	</tr>
 </table>
 
-</body>
+<table class="other_half">		
+	<thead>
+		<tr>
+			<th>T#</th>
+			<th>Account</th>
+			<th>Date</th>
+			<th>Payee</th>
+			<th>Category</th>
+			<th>Outflow</th>
+			<th>Inflow</th>
+		</tr>
+	</thead>	
+	<% count = 0 %>
+	<% @rows.each do |row| %>
+	<% count = count + 1 %>
+	<tr>
+		<td><%= count.to_s + ": " %></td>
+			<% currentRow = row.split(",")
+				currentRow.each do |x| %>
+					<td><%= x %> </td>
+				<% end %>
+	</tr>
+	<% end %>
+</table>

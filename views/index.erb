@@ -1,19 +1,5 @@
-<body>
+<p class="page_title"><%= @message %></p>
 
-<h1><%= @message %></h1>
+<p class="page_subtitle">You have successfully logged in.</p>
 
-<p>Select an account to view or option below:</p>
-
-<select onChange="window.location.href=this.value">
-	<option value="/" selected="selected">Main Menu</option>
-	<option value="/data?name=Sonia">Account: Sonia</option>
-	<option value="/data?name=Priya">Account: Priya</option>
-	<option value="/printcsv">Print All Stored Transactions & Edit Information</option>
-	<option value="/addcsv">Add New Transaction</option>
-</select>
-
-<p>Welcome to Accounts Management. Select an option above to continue!</p>
-
-<p>No user is logged in. Please login <a href="/">here</a>.</p>
-
-</body>
+<p>Select an option above. <em>Put some other stuff here! :D</em></p>

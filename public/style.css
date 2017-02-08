@@ -1,4 +1,70 @@
 body {
-	background-color: rgb(173,187,209);
-	font-family: Helvetica;
+	font-family: 'Fira Sans', sans-serif;
+	color: white;
+	margin: 0;
+    background-color: #363636;
+    background-image:         
+    	linear-gradient(45deg, hsla(0,0%,0%,.25) 25%, transparent 25%, transparent 75%, hsla(0,0%,0%,.25) 75%, hsla(0,0%,0%,.25)), 
+        linear-gradient(45deg, hsla(0,0%,0%,.25) 25%, transparent 25%, transparent 75%, hsla(0,0%,0%,.25) 75%, hsla(0,0%,0%,.25));
+    background-position: 0 0, 2px 2px;
+    background-size: 4px 4px;
+}
+
+.top {
+	padding: 20px;
+	margin-top: 30px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(121, 122, 124);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #4CAF50;
+}
+
+.page_title {
+	font-family: 'Poppins', sans-serif;
+	font-size: 2.0em;
+	text-align: center;
+}
+
+.page_subtitle {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.25em;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
+.half {
+	width: 25%;
+	float: left;
+	text-align: center;
+}
+
+.other_half {
+	width: 75%;
+	float: right;
 }

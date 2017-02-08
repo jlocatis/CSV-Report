@@ -8,6 +8,34 @@ require 'csv'
 
 enable :sessions
 
+get("/"){
+	@user = session[:currentuser]
+	erb :login
+}
+
+post("/login"){
+	@name = params["username"]
+	@password = params["password"]
+
+	allusers = {}
+	CSV.foreach("./views/users.csv", {headers:true, return_headers: false}) do |row|
+		key = row["username"]
+		value = row["password"]
+		allusers[key]=value
+	end
+
+	temppassword = allusers[@name]
+	if @password == temppassword
+		session[:currentuser] = @name
+		session[:message] = "Welcome #{@name.capitalize}!"
+		redirect('/index')
+	else
+		session[:notcurrentuser] = @name
+		redirect('/loginerror')
+	end
+	
+}
+
 get("/index") {
 	@message = session[:message]
 	erb :index
@@ -68,40 +96,12 @@ post('/editcsv') {
 	redirect('/editrow')
 }
 
-get("/"){
-	@user = session[:currentuser]
-	erb :login
-}
-
 get('/loginerror'){
 	@name = session[:notcurrentuser]
 	erb :loginerror
 }
 
-post("/login"){
-	@name = params["username"]
-	@password = params["password"]
-
-	allusers = {}
-	CSV.foreach("./views/users.csv", {headers:true, return_headers: false}) do |row|
-		key = row["username"]
-		value = row["password"]
-		allusers[key]=value
-	end
-
-	temppassword = allusers[@name]
-	if @password == temppassword
-		session[:currentuser] = @name
-		session[:message] = "Welcome #{@name.capitalize}!"
-		redirect('/index')
-	else
-		session[:notcurrentuser] = @name
-		redirect('/loginerror')
-	end
-	
-}
-
-post('/logout'){
+get('/logout'){
 	session.delete(:currentuser)
 	redirect('/')
 }
