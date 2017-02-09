@@ -8,8 +8,8 @@
 	<p><a href="/index">Click here</a> to return to the admin menu.</p>
 <% else %>
 	<form action="/login" method="post">
-		<p class="center">Username: <input type="text" name="username"></p>
-		<p class="center">Password: <input type="password" name="password"></p>
-		<p class="center"><<button class="depth" type="submit">&#10004;</button></p>
+		<p class="center">Username: <input type="text" name="username" placeholder="Enter username" required autofocus></p>
+		<p class="center">Password: <input type="password" name="password" placeholder="Enter password" required></p>
+		<p class="center"><button class="depth" type="submit">&#10004;</button></p>
 	</form>
 <% end %>

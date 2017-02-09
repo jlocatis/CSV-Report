@@ -2,7 +2,7 @@ button {
 	left: 50%;
     margin: -40px;
     position: absolute;
-    top: 50%;
+    top: 60%;
 }
 button:hover,
 button:active {

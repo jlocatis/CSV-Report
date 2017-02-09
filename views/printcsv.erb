@@ -2,23 +2,6 @@
 
 <p class="center"><strong>View, edit, or delete all transactions available.</strong></p>
 
-<table class="half">
-	<tr>
-		<td>
-			<p>Enter a line (T#) to remove:</p>
-			<form action="/printcsv" method="post">
-				<p><input type="number" name="row_to_remove"></p>
-				<p><input type="submit"></p>
-			</form>
-			<p>Enter a line (T#) to edit:</p>
-			<form action="/editcsv" method="post">
-				<p><input type="number" name="row_to_edit"></p>
-				<p><input type="submit"></p>
-			</form>
-		</td>
-	</tr>
-</table>
-
 <table class="other_half">		
 	<thead>
 		<tr>
@@ -42,4 +25,47 @@
 				<% end %>
 	</tr>
 	<% end %>
+</table>
+
+<table class="half">
+	<tr>
+		<td>
+			<p class="underline">Select a line to remove:</p>
+			<form action="/printcsv" method="post">
+				<p><select name="row_to_remove">
+					<% count = 0
+					@rows.each do |row|
+					count = count + 1 %>
+						<option value="<%= count %>"><%= count %></option>
+					<% end %>
+					</select>
+				</p>
+				<p><input type="submit" value="Remove Transaction" onclick="return confirm('Are you sure you want to delete this transaction?')">
+			</form>
+			<div class="colorstrip"></div>
+			<p class="underline">Select a line to edit:</p>
+			<form action="/editcsv" method="post">
+				<p><select name="row_to_edit">
+					<% count = 0
+					@rows.each do |row|
+					count = count + 1 %>
+						<option value="<%= count %>"><%= count %></option>
+					<% end %>
+					</select>
+				</p>
+				<p><input type="submit" value="Edit Transaction"></p>
+			</form>
+			<div class="colorstrip"></div>
+			<p class="underline">Add a new transaction:</p>
+			<form action="/addcsv" method="post">
+				<p>Account Name: <input type="text" name="Account" placeholder="Account" required></p>
+				<p>Date: <input type="text" name="Date" placeholder="MM/DD/YYYY" required></p>
+				<p>Payee: <input type="text" name="Payee" placeholder="PAYEE" required class="force_uppercase"></p>
+				<p>Category: <input type="text" name="Category" placeholder="Category" required></p>
+				<p>Inflow: <input type="text" name="Inflow" value="$" required></p>
+				<p>Outflow: <input type="text" name="Outflow" value="$" required></p>
+				<input type="Submit" value="Add Transaction">
+			</form>
+		</td>
+	</tr>
 </table>

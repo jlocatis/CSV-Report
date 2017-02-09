@@ -3,24 +3,24 @@
 <% editrow = @rows.values_at(@row_to_edit).shift
 	newArray = editrow.split(",") %>
 
-<table>
-	<tr>
+<table class="edit_table">
+	<tr class="bottom_border">
 		<td><strong>Account:</strong></td>
 		<td><%= newArray[0] %></td>
 	</tr>
-	<tr>
+	<tr class="bottom_border">
 		<td><strong>Date:</strong></td>
 		<td><%= newArray[1] %></td>
 	</tr>
-	<tr>
+	<tr class="bottom_border">
 		<td><strong>Payee:</strong></td>
 		<td><%= newArray[2] %></td>
 	</tr>
-	<tr>
+	<tr class="bottom_border">
 		<td><strong>Category:</strong></td>
 		<td><%= newArray[3] %></td>
 	</tr>
-	<tr>
+	<tr class="bottom_border">
 		<td><strong>Outflow:</strong></td>
 		<td><%= newArray[4] %></td>
 	</tr>
@@ -30,6 +30,9 @@
 	</tr>
 </table>
 
+<p class="center"><strong>Select the item of the transaction you with to update:</strong></p>
+
+<div class="center">
 <form action="/editrow" method="post">
 	<select name="x">
 		<option value="0">Account</option>
@@ -39,6 +42,11 @@
 		<option value="4">Outflow</option>
 		<option value="5">Inflow</option>
 	</select>
-	<p><input type="text" name="info_to_edit"></p>
-	<p><input type="submit"></p>
+	<p>Enter the updated text or value:</p>
+	<p><input type="text" name="info_to_edit" placeholder="Updated Info Here" required></p>
+	<p><input type="submit" value="Update"></p>
 </form>
+<form action="/printcsv" method="get">
+	<p><input type="submit" value="Cancel"></p>
+</form>
+</div>

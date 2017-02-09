@@ -64,11 +64,6 @@ post("/addcsv") {
 	redirect('/addcsvsuccess')
 }
 
-get("/addcsv") {
-	checkUsername(session[:currentuser])
-	erb :addcsv
-}
-
 get("/addcsvsuccess") {
 	checkUsername(session[:currentuser])
 	erb :addcsvsuccess
@@ -106,9 +101,4 @@ get('/logout'){
 	redirect('/')
 }
 
-# OLD CODE
-# get("/both") {
-# 	@data = csvAccountDataParsing
-# 	@names = ['Sonia', 'Priya']
-# 	erb :data
-# }
+#rename index page
