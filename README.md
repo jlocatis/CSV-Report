@@ -2,11 +2,11 @@ This is a basic accounting program that allows the user to input their own .csv 
 
 SETUP
 
-The user will need to provide their own properly formatted .csv file of data. For example see the 'accounts.csv' file in the main directory. This file will work with the program using sample information. To provide your own .csv file, simply replace the sample file with your own (rename your own to 'accounts.csv'). It is recomended that you move the sample file into a new folder in case you need to reference back to it. After this simply run the program using a Ruby Sinatra web server. The program can be started by running the 'web.rb' file.
+The user will need to provide their own properly formatted .csv file of data. For example see the 'accounts.csv' file in the main directory. This file will work with the program using sample information. To provide your own .csv file, simply replace the sample file with your own (rename your own to 'accounts.csv'). It is recomended that you move the sample file into a new folder in case you need to reference back to it. After this simply run the program using a Ruby Sinatra web server. The program can be started by running the 'web.rb' ruby file in your terminal.
 
 ADDING USERS
 
-User are hard-coded to the file 'users.csv' in the views folder. In order to add (or remove) users for login, simply edit the file. Use the structure "username,password" on a single line.
+Users are hard-coded to the file 'users.csv' in the views folder. In order to add (or remove) users for login, simply edit the file. Use the structure "username,password" on a single line.
 
 HOW TO USE
 
